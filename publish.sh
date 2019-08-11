@@ -13,7 +13,7 @@ git commit -m "Adding ${docker_version}"
 # TODO: Only tag if tag doesn't exist
 git tag -f -m "Version ${docker_version}" "v${docker_version}"
 git push
-git push --tags
+git push -f --tags
 
 echo 'Pushing'
 docker push alex88/unifi-rpi:${docker_version}-amd64
