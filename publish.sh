@@ -11,7 +11,7 @@ echo 'Tagging and Pushing to Git'
 git add .
 git commit -m "Adding ${docker_version}"
 # TODO: Only tag if tag doesn't exist
-git tag -m "Version ${docker_version}" "v${docker_version}"
+git tag -f -m "Version ${docker_version}" "v${docker_version}"
 git push
 git push --tags
 
