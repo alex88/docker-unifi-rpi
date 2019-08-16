@@ -2,6 +2,9 @@ FROM debian:stretch-slim as tini
 ENV TINI_VERSION v0.18.0
 ENV TINI_ARCH -armhf
 
+RUN mkdir ~/.gnupg
+RUN echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
       wget \
       ca-certificates \
