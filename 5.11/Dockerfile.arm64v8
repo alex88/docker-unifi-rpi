@@ -2,6 +2,9 @@ FROM debian:stretch-slim as tini
 ENV TINI_VERSION v0.18.0
 ENV TINI_ARCH -arm64
 
+RUN mkdir ~/.gnupg
+RUN echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
       wget \
       ca-certificates \
@@ -40,8 +43,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install any version from deb download
 # Use dpkg to mark the package for install (expect it to fail to complete the installation)
 # Use apt-get install -f to complete the installation with dependencies
-ENV UNIFI_VERSION 5.11.38-65a83af88b
-ENV UNIFI_DOCKER_VERSION 5.11.38
+ENV UNIFI_VERSION 5.11.39-54b4ab1ed1
+ENV UNIFI_DOCKER_VERSION 5.11.39
 RUN mkdir -p /usr/share/man/man1 && \
       mkdir -p /tmp/build && \
       cd /tmp/build && \
